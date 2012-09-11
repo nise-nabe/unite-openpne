@@ -14,8 +14,9 @@ endfunction
 
 function! s:source.gather_candidates(args, context)
   let models = []
-  let path = 'lib/model/'
-  for model in split(globpath(path, '**/*.php'), '\n')
+  let openpne_root = unite#sources#openpne#helper#get_openpne_root()
+  let path = '/lib/model/'
+  for model in split(globpath(openpne_root . path, '**/*.php'), '\n')
     call add(models, {'word': substitute(model, path . '/', '', ''), 'kind': 'file', 'action__path': model})
   endfor
   return models
