@@ -5,7 +5,7 @@ function! unite#sources#openpne#define()
   let names = ["model"]
   for val in names
     let source = copy(s:source)
-    let source.description = 'test for ' . val
+    let source.description = 'conditates from ' . val . ' list'
     let source.name = 'openpne/' . val
     call add(list , source)
   endfor
