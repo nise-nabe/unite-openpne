@@ -1,3 +1,5 @@
+call unite#util#set_default('g:unite_openpne_execute_cmd' , 'VimShellExecute')
+
 let s:source = {}
 
 function! unite#sources#openpne#define()
