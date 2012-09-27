@@ -2,7 +2,7 @@ function! unite#sources#openpne#collector#action#candidates(source)
   let actions = []
   let paths = [
         \ 'apps/**/actions.class.php',
-        \ 'lib/actions/*.php',
+        \ 'lib/action/*.php',
         \ 'plugins/op*Plugin/apps/**/actions.class.php',
         \ 'plugins/op*Plugin/lib/**/*Action.class.php',
         \ 'plugins/op*Plugin/lib/**/*Actions.class.php',
