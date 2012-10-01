@@ -2,7 +2,7 @@ call unite#util#set_default('g:unite_openpne_execute_cmd' , 'VimShellExecute')
 
 let s:source = {}
 
-function! unite#sources#openpne#define()
+function! unite#sources#pne#define()
   let rel_path = 'autoload/unite/sources/openpne/collector/*.vim'
   let names = map(split(globpath(&runtimepath, rel_path), "\<NL>") ,
         \ 'fnamemodify(v:val , ":t:r")')
