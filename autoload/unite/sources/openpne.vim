@@ -10,7 +10,7 @@ function! unite#sources#openpne#define()
   for val in names
     let source = copy(s:source)
     let source.description = 'conditates from ' . val . ' list'
-    let source.name = 'openpne/' . val
+    let source.name = 'pne/' . val
     call add(list , source)
   endfor
   return list
@@ -18,7 +18,7 @@ endfunction
 
 function! s:source.gather_candidates(args, context)
   let openpne_root = unite#sources#openpne#helper#get_openpne_root()
-  let func_name = 'unite#sources#openpne#collector#' . substitute(self.name, 'openpne/', '', '') . '#candidates'
+  let func_name = 'unite#sources#openpne#collector#' . substitute(self.name, 'pne/', '', '') . '#candidates'
   let self.source__openpne_root = openpne_root
   return {func_name}(self)
 endfunction
