@@ -18,7 +18,7 @@ endfunction
 
 function! s:source.gather_candidates(args, context)
   let openpne_root = unite#sources#openpne#helper#get_openpne_root()
-  if openpne_root == 0
+  if openpne_root ==# ''
     let openpne_root = unite#sources#openpne#helper#get_openpne_plugin_root()
   endif
   let func_name = 'unite#sources#openpne#collector#' . substitute(self.name, 'pne/', '', '') . '#candidates'

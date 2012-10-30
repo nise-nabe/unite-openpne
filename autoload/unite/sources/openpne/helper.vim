@@ -10,7 +10,7 @@ function! unite#sources#openpne#helper#get_openpne_root()
     let previous = root
     let root = fnamemodify(root, ':h')
   endwhile
-  return 0
+  return ''
 endfunction
 
 function! unite#sources#openpne#helper#get_openpne_plugin_root()
@@ -25,7 +25,7 @@ function! unite#sources#openpne#helper#get_openpne_plugin_root()
     let previous = root
     let root = fnamemodify(root, ':h')
   endwhile
-  return 0
+  return ''
 endfunction
 function! s:sub(str,pat,rep) abort
   return substitute(a:str,'\v\C'.a:pat,a:rep,'')
