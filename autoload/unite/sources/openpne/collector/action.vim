@@ -1,5 +1,5 @@
 function! unite#sources#openpne#collector#action#candidates(source)
-  let actions = []
+  let src = []
   let paths = [
         \ 'apps/**/actions.class.php',
         \ 'lib/action/*.php',
@@ -10,8 +10,8 @@ function! unite#sources#openpne#collector#action#candidates(source)
         \]
   for path in paths
     for action in split(globpath(a:source.source__openpne_root, path), '\n')
-      call add(actions, {'word': action, 'kind': 'file', 'action__path': action})
+      call add(src, {'word': action, 'kind': 'file', 'action__path': action})
     endfor
   endfor
-  return actions
+  return src
 endfunction

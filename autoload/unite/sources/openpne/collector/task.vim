@@ -1,19 +1,20 @@
 function! unite#sources#openpne#collector#task#candidates(source)
-  let tasks = []
+  let src = []
 
-  call add(tasks, {'word': 'symfony cc', 'kind': 'command', 'action__command': g:unite_openpne_execute_cmd . ' ' . a:source.source__openpne_root . '/symfony cc'})
-  call add(tasks, {'word': 'symfony doctrine:build-model', 'kind': 'command', 'action__command': g:unite_openpne_execute_cmd . ' ' . a:source.source__openpne_root . '/symfony doctrine:build-form'})
-  call add(tasks, {'word': 'symfony doctrine:build-form', 'kind': 'command', 'action__command': g:unite_openpne_execute_cmd . ' ' . a:source.source__openpne_root . '/symfony doctrine:build-form'})
-  call add(tasks, {'word': 'symfony doctrine:build-filter', 'kind': 'command', 'action__command': g:unite_openpne_execute_cmd . ' ' . a:source.source__openpne_root . '/symfony doctrine:build-form'})
-  call add(tasks, {'word': 'symfony plugin:publish-assets', 'kind': 'command', 'action__command': g:unite_openpne_execute_cmd . ' ' . a:source.source__openpne_root . '/symfony doctrine:build-form'})
-  call add(tasks, {'word': 'symfony project:clear-controllers', 'kind': 'command', 'action__command': g:unite_openpne_execute_cmd . ' ' . a:source.source__openpne_root . '/symfony doctrine:build-form'})
+  call add(src, {'word': 'symfony cc', 'kind': 'command', 'action__command': g:unite_openpne_execute_cmd . ' ' . a:source.source__openpne_root . '/symfony cc'})
+  call add(src, {'word': 'symfony doctrine:build-model', 'kind': 'command', 'action__command': g:unite_openpne_execute_cmd . ' ' . a:source.source__openpne_root . '/symfony doctrine:build-form'})
+  call add(src, {'word': 'symfony doctrine:build-form', 'kind': 'command', 'action__command': g:unite_openpne_execute_cmd . ' ' . a:source.source__openpne_root . '/symfony doctrine:build-form'})
+  call add(src, {'word': 'symfony doctrine:build-filter', 'kind': 'command', 'action__command': g:unite_openpne_execute_cmd . ' ' . a:source.source__openpne_root . '/symfony doctrine:build-form'})
+  call add(src, {'word': 'symfony plugin:publish-assets', 'kind': 'command', 'action__command': g:unite_openpne_execute_cmd . ' ' . a:source.source__openpne_root . '/symfony doctrine:build-form'})
+  call add(src, {'word': 'symfony project:clear-controllers', 'kind': 'command', 'action__command': g:unite_openpne_execute_cmd . ' ' . a:source.source__openpne_root . '/symfony doctrine:build-form'})
+  call add(src, {'word': 'symfony app:route pc_frontend', 'kind': 'command', 'action__command': g:unite_openpne_execute_cmd . ' ' . a:source.source__openpne_root . '/symfony doctrine:build-form'})
 
   let paths = ['**/task/*.*']
   for path in paths
     for task in split(globpath(a:source.source__openpne_root, path), '\n')
-      call add(tasks, {'word': task, 'kind': 'file', 'action__path': task})
+      call add(src, {'word': task, 'kind': 'file', 'action__path': task})
     endfor
   endfor
 
-  return tasks
+  return src
 endfunction
