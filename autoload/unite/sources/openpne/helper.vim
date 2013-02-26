@@ -19,8 +19,8 @@ function! unite#sources#openpne#helper#get_openpne_plugin_root()
   while root !=# previous
     let dir = s:sub(root, '[\/]$', '')
     let type = getftype(dir)
-    if type ==# "dir" && fnamemodify(root, ":t") =~ "op.*Plugin"
-      return root
+    if type ==# "dir" && fnamemodify(root, ":t") !~ "modules" && fnamemodify(previous, ":t") =~ "op.*Plugin"
+      return previous
     endif
     let previous = root
     let root = fnamemodify(root, ':h')
