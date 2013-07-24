@@ -5,8 +5,8 @@ function! unite#sources#openpne#collector#routing#candidates(source)
         \ '**/routing.yml',
         \]
   for path in paths
-    for routing in split(globpath(a:source.source__openpne_root, path), '\n')
-      call add(src, {'word': routing, 'kind': 'file', 'action__path': routing})
+    for real_path in split(globpath(a:source.source__openpne_root, path), '\n')
+      call add(src, {'word': substitute(real_path, a:source.source__openpne_root, '', 'g'), 'kind': 'file', 'action__path': real_path })
     endfor
   endfor
   return src

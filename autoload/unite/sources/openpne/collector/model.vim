@@ -1,9 +1,12 @@
 function! unite#sources#openpne#collector#model#candidates(source)
   let src = []
-  let paths = ['/lib/model/', '/plugins/op*Plugin/lib/model/']
+  let paths = [
+        \ '/lib/model/**/*.php',
+        \ '/plugins/op*Plugin/lib/model/**/*.php'
+        \]
   for path in paths
-    for model in split(globpath(a:source.source__openpne_root . path, '**/*.php'), '\n')
-      call add(src, {'word': substitute(model, path . '/', '', ''), 'kind': 'file', 'action__path': model})
+    for real_path in split(globpath(a:source.source__openpne_root, path), '\n')
+      call add(src, {'word': substitute(real_path, a:source.source__openpne_root, '', 'g'), 'kind': 'file', 'action__path': real_path })
     endfor
   endfor
   return src

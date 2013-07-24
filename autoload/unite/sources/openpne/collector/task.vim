@@ -11,10 +11,9 @@ function! unite#sources#openpne#collector#task#candidates(source)
 
   let paths = ['**/task/*.*']
   for path in paths
-    for task in split(globpath(a:source.source__openpne_root, path), '\n')
-      call add(src, {'word': task, 'kind': 'file', 'action__path': task})
+    for real_path in split(globpath(a:source.source__openpne_root, path), '\n')
+      call add(src, {'word': substitute(real_path, a:source.source__openpne_root, '', 'g'), 'kind': 'file', 'action__path': real_path })
     endfor
   endfor
-
   return src
 endfunction

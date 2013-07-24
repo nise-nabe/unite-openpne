@@ -4,8 +4,8 @@ function! unite#sources#openpne#collector#lib#candidates(source)
         \ '**/lib/**/*.*',
         \ ]
   for path in paths
-    for word in split(globpath(a:source.source__openpne_root, path), '\n')
-      call add(src, {'word': word, 'kind': 'file', 'action__path': word})
+    for real_path in split(globpath(a:source.source__openpne_root, path), '\n')
+      call add(src, {'word': substitute(real_path, a:source.source__openpne_root, '', 'g'), 'kind': 'file', 'action__path': real_path })
     endfor
   endfor
   return src

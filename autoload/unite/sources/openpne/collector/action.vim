@@ -9,8 +9,8 @@ function! unite#sources#openpne#collector#action#candidates(source)
         \ 'plugins/op*Plugin/lib/**/*Actions.class.php',
         \]
   for path in paths
-    for action in split(globpath(a:source.source__openpne_root, path), '\n')
-      call add(src, {'word': action, 'kind': 'file', 'action__path': action})
+    for real_path in split(globpath(a:source.source__openpne_root, path), '\n')
+      call add(src, {'word': substitute(real_path, a:source.source__openpne_root, '', 'g'), 'kind': 'file', 'action__path': real_path })
     endfor
   endfor
   return src
